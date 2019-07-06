@@ -1,0 +1,24 @@
+{
+  "name": "oadate",
+  "version": "0.1.0",
+  "description": "Converts between Date and OLE Automation Date",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blikblum/oadate.git"
+  },
+  "keywords": [
+    "date",
+    "oadate"
+  ],
+  "author": "Luiz Américo Pereira Câmara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blikblum/oadate/issues"
+  },
+  "homepage": "https://github.com/blikblum/oadate#readme"
+}
