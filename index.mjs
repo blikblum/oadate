@@ -28,7 +28,7 @@ export function OADateToDate(value) {
 export class TDateTime extends Date {
   constructor(...args) {
     if (args.length === 1 && typeof args[0] === "number") {
-      super(OADateToDate(this.prepareOADate(args[0])))
+      super(OADateToDate(args[0]))
     } else {
       super(...args)
     }
