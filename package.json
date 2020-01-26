@@ -2,10 +2,10 @@
   "name": "oadate",
   "version": "0.2.0",
   "description": "Converts between Date and OLE Automation Date",
-  "type": "module",
-  "main": "index.mjs",
+  "main": "index.js",
+  "module": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npx rollup index.mjs --file index.js --format cjs --no-esModule --no-strict"
   },
   "repository": {
     "type": "git",
