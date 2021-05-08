@@ -1,33 +1,44 @@
-let epoch = new Date(1899, 11, 30)
-const msPerDay = 8.64e7
+const defaultOffset = new Date().getTimezoneOffset()
 
-export function DateToOADate(value) {
-  let result = (-1 * (epoch - value)) / msPerDay
+// code below extracted from https://github.com/markitondemand/moment-msdate
+const MINUTE_MILLISECONDS = 60 * 1000
+const DAY_MILLISECONDS = 86400000
+const MS_DAY_OFFSET = 25569
 
-  // Deal with dates prior to 1899-12-30 00:00:00
-  const dec = result - Math.floor(result)
-
-  if (result < 0 && dec) {
-    result = Math.floor(result) - dec
+const oaDateToTicks = function (oaDate) {
+  var ticks = (oaDate - MS_DAY_OFFSET) * DAY_MILLISECONDS
+  if (oaDate < 0) {
+    const frac = (oaDate - Math.trunc(oaDate)) * DAY_MILLISECONDS
+    if (frac !== 0) {
+      ticks -= frac * 2
+    }
   }
-
-  return result
+  return ticks
 }
 
-export function OADateToDate(value) {
-  // Deal with -ve values
-  const dec = value - Math.floor(value)
-
-  if (value < 0 && dec) {
-    value = Math.floor(value) - dec
+const ticksToOADate = function (ticks) {
+  var oad = ticks / DAY_MILLISECONDS + MS_DAY_OFFSET
+  if (oad < 0) {
+    const frac = oad - Math.trunc(oad)
+    if (frac !== 0) {
+      oad = Math.ceil(oad) - frac - 2
+    }
   }
+  return oad
+}
 
-  return new Date(value * msPerDay + +epoch)
+export function DateToOADate(value, offset = defaultOffset) {
+  return ticksToOADate(value.valueOf() - offset * MINUTE_MILLISECONDS)
+}
+
+export function OADateToDate(value, offset = defaultOffset) {
+  const ticks = oaDateToTicks(value)
+  return new Date(ticks + offset * MINUTE_MILLISECONDS)
 }
 
 export class TDateTime extends Date {
   constructor(...args) {
-    if (args.length === 1 && typeof args[0] === "number") {
+    if (args.length === 1 && typeof args[0] === 'number') {
       super(OADateToDate(args[0]))
     } else {
       super(...args)
