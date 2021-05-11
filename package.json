@@ -2,11 +2,11 @@
   "name": "oadate",
   "version": "0.4.0",
   "description": "Converts between Date and OLE Automation Date",
-  "main": "index.js",
+  "main": "index.cjs",
   "module": "index.mjs",
   "type": "module",
   "scripts": {
-    "prepublishOnly": "npx rollup index.mjs --file index.js --format cjs --no-esModule --no-strict",
+    "prepublishOnly": "npx rollup index.mjs --file index.cjs --format cjs --no-esModule --no-strict",
     "test": "mocha --reporter spec tests/**/*.test.js",
     "test:watch": "mocha --parallel --reporter spec --watch tests/**/*.test.js"
   },
@@ -15,6 +15,7 @@
     "url": "git+https://github.com/blikblum/oadate.git"
   },
   "keywords": [
+    "javascript",
     "date",
     "oadate"
   ],
