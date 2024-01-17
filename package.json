@@ -5,10 +5,12 @@
   "main": "index.cjs",
   "module": "index.mjs",
   "type": "module",
+  "types": "types/index.d.mts",
   "scripts": {
     "prepublishOnly": "npx rollup index.mjs --file index.cjs --format cjs --no-esModule --no-strict",
     "test": "mocha --reporter spec tests/**/*.test.js",
-    "test:watch": "mocha --parallel --reporter spec --watch tests/**/*.test.js"
+    "test:watch": "mocha --parallel --reporter spec --watch tests/**/*.test.js",
+    "types": "tsc --project tsconfig.types.json"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/blikblum/oadate#readme",
   "devDependencies": {
     "chai": "^4.3.4",
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "typescript": "^5.3.3"
   }
 }

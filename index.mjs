@@ -5,7 +5,11 @@ const MINUTE_MILLISECONDS = 60 * 1000
 const DAY_MILLISECONDS = 86400000
 const MS_DAY_OFFSET = 25569
 
-const oaDateToTicks = function (oaDate) {
+/**
+ * @param {number} oaDate
+ * @return {number}
+ */
+function oaDateToTicks(oaDate) {
   var ticks = (oaDate - MS_DAY_OFFSET) * DAY_MILLISECONDS
   if (oaDate < 0) {
     const frac = (oaDate - Math.trunc(oaDate)) * DAY_MILLISECONDS
@@ -16,7 +20,11 @@ const oaDateToTicks = function (oaDate) {
   return ticks
 }
 
-const ticksToOADate = function (ticks) {
+/**
+ * @param {number} ticks
+ * @return {number}
+ */
+function ticksToOADate(ticks) {
   var oad = ticks / DAY_MILLISECONDS + MS_DAY_OFFSET
   if (oad < 0) {
     const frac = oad - Math.trunc(oad)
@@ -27,10 +35,22 @@ const ticksToOADate = function (ticks) {
   return oad
 }
 
+/**
+ * @export
+ * @param {Date} value
+ * @param {number} [offset=defaultOffset]
+ * @return {number}
+ */
 export function DateToOADate(value, offset = defaultOffset) {
   return ticksToOADate(value.valueOf() - offset * MINUTE_MILLISECONDS)
 }
 
+/**
+ * @export
+ * @param {number} value
+ * @param {number} [offset=defaultOffset]
+ * @return {Date}
+ */
 export function OADateToDate(value, offset = defaultOffset) {
   const ticks = oaDateToTicks(value)
   return new Date(ticks + offset * MINUTE_MILLISECONDS)
