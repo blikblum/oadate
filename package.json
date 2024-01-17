@@ -1,6 +1,6 @@
 {
   "name": "oadate",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Converts between Date and OLE Automation Date",
   "main": "index.cjs",
   "module": "index.js",
