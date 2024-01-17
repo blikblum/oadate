@@ -1,11 +1,11 @@
 {
   "name": "oadate",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Converts between Date and OLE Automation Date",
   "main": "index.cjs",
-  "module": "index.mjs",
+  "module": "index.js",
   "type": "module",
-  "types": "types/index.d.mts",
+  "types": "types/index.d.ts",
   "scripts": {
     "prepublishOnly": "npx rollup index.js --file index.cjs --format cjs --no-esModule --no-strict",
     "test": "mocha --reporter spec tests/**/*.test.js",
