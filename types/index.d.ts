@@ -23,4 +23,4 @@ export class TDate extends TDateTime {
 export class TTime extends TDateTime {
     prepareOADate(value: any): number;
 }
-//# sourceMappingURL=index.d.mts.map
+//# sourceMappingURL=index.d.ts.map

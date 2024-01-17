@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { OADateToDate, DateToOADate } from '../index.mjs'
+import { OADateToDate, DateToOADate } from '../index.js'
 
 describe('OADateToDate', () => {
   it('should convert OA Date to JS Date using an offset in minutes', () => {

@@ -1,16 +1,24 @@
 {
   "name": "oadate",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Converts between Date and OLE Automation Date",
   "main": "index.cjs",
   "module": "index.mjs",
   "type": "module",
   "types": "types/index.d.mts",
   "scripts": {
-    "prepublishOnly": "npx rollup index.mjs --file index.cjs --format cjs --no-esModule --no-strict",
+    "prepublishOnly": "npx rollup index.js --file index.cjs --format cjs --no-esModule --no-strict",
     "test": "mocha --reporter spec tests/**/*.test.js",
     "test:watch": "mocha --parallel --reporter spec --watch tests/**/*.test.js",
     "types": "tsc --project tsconfig.types.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -19,7 +27,8 @@
   "keywords": [
     "javascript",
     "date",
-    "oadate"
+    "oadate",
+    "ole automation date"
   ],
   "author": "Luiz Américo Pereira Câmara",
   "license": "MIT",
